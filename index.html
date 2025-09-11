@@ -3,15 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Nuevo Usuario</title>
+    <title>Registro de Nuevos Usuarios</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Estilos generales para el cuerpo de la página */
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
         }
+
+        /* Contenedor principal del formulario */
+        .form-container {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #1a202c;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            font-size: 1.875rem;
+        }
+
+        .form-subtitle {
+            color: #4a5568;
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 0.25rem;
+            color: #4a5568;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            background: #6366f1;
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: #4f46e5;
+            transform: translateY(-2px);
+        }
+
         .message-box {
             margin-top: 1rem;
             padding: 1rem;
@@ -19,148 +91,170 @@
             text-align: center;
             font-weight: 600;
         }
+
         .success {
             background-color: #d1fae5;
             color: #065f46;
         }
+
         .error {
             background-color: #fee2e2;
             color: #991b1b;
         }
+
+        .loading {
+            background-color: #e5e7eb;
+            color: #374151;
+        }
+
+        .field-group {
+            margin-bottom: 1rem;
+        }
+
+        .tallas-grid, .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .tallas-grid label, .grid-3 label {
+            font-size: 0.875rem;
+            color: #718096;
+            font-weight: 500;
+            text-align: left;
+        }
     </style>
 </head>
-<body class="bg-slate-900 flex justify-center items-center min-h-screen p-4">
-    <div class="bg-white p-8 md:p-12 rounded-xl shadow-2xl w-full max-w-lg">
-        <h1 class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-6">Registro de Nuevo Usuario</h1>
-        <p class="text-center text-gray-500 mb-4 text-sm">Este formulario envía los datos directamente a una hoja de cálculo de Google Sheets.</p>
+<body>
+    <div class="form-container">
+        <h1>Registro de Nuevos Usuarios</h1>
+        <p class="form-subtitle">Por favor, completa el siguiente formulario para registrar un nuevo usuario en la base de datos.</p>
 
-        <form id="registro-form" class="space-y-4">
-            <!-- Campos de registro -->
-            <div>
-                <label for="nombre_completo" class="block text-gray-700 font-medium mb-1">Nombres y Apellidos:</label>
-                <input type="text" id="nombre_completo" name="Nombres y Apellidos" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow">
+        <form id="registro-form">
+            <div class="field-group">
+                <label for="nombre_completo">Nombres y Apellidos</label>
+                <input type="text" id="nombre_completo" name="Nombres y Apellidos" required>
             </div>
-            <div>
-                <label for="dni" class="block text-gray-700 font-medium mb-1">DNI:</label>
-                <input type="text" id="dni" name="DNI" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow">
+            <div class="field-group">
+                <label for="dni">DNI</label>
+                <input type="text" id="dni" name="DNI" required>
             </div>
-            <div>
-                <label for="celular" class="block text-gray-700 font-medium mb-1">Nº Celular:</label>
-                <input type="tel" id="celular" name="Nº Celular" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow">
+            <div class="field-group">
+                <label for="celular">Nº Celular</label>
+                <input type="tel" id="celular" name="Nº Celular">
             </div>
-            <div>
-                <label for="email" class="block text-gray-700 font-medium mb-1">Correo Electronico:</label>
-                <input type="email" id="email" name="Correo Electronico" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow">
+            <div class="field-group">
+                <label for="email">Correo Electronico</label>
+                <input type="email" id="email" name="Correo Electronico" required>
             </div>
-            <div>
-                <label for="edad" class="block text-gray-700 font-medium mb-1">Edad:</label>
-                <input type="number" id="edad" name="Edad" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow">
+            <div class="field-group">
+                <label for="edad">Edad</label>
+                <input type="number" id="edad" name="Edad">
             </div>
-            <div>
-                <label for="puesto_cargo" class="block text-gray-700 font-medium mb-1">Puesto/Cargo:</label>
-                <input type="text" id="puesto_cargo" name="Puesto/Cargo" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow">
+            <div class="field-group">
+                <label for="puesto_cargo">Puesto/Cargo</label>
+                <input type="text" id="puesto_cargo" name="Puesto/Cargo">
             </div>
-            <div>
-                <label for="area_trabajo" class="block text-gray-700 font-medium mb-1">Area/Zona de Trabajo:</label>
-                <input type="text" id="area_trabajo" name="Area/Zona de Trabajo" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow">
+            <div class="field-group">
+                <label for="area_trabajo">Area/Zona de Trabajo</label>
+                <input type="text" id="area_trabajo" name="Area/Zona de Trabajo">
             </div>
-            <div>
-                <label for="nacionalidad" class="block text-gray-700 font-medium mb-1">Nacionalidad:</label>
-                <input type="text" id="nacionalidad" name="Nacionalidad" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow">
+            <div class="field-group">
+                <label for="nacionalidad">Nacionalidad</label>
+                <input type="text" id="nacionalidad" name="Nacionalidad">
             </div>
-            <div>
-                <label for="direccion" class="block text-gray-700 font-medium mb-1">Direccion:</label>
-                <input type="text" id="direccion" name="Direccion" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow">
+            <div class="field-group">
+                <label for="direccion">Direccion</label>
+                <input type="text" id="direccion" name="Direccion">
             </div>
 
-            <!-- Nuevos campos para Talla de Ropa de Trabajo en una sola fila -->
-            <div class="pt-4">
-                <p class="text-gray-700 font-bold mb-2">Talla de Ropa de Trabajo:</p>
-                <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
-                    <div class="flex-1">
-                        <label for="talla_camisa" class="block text-gray-700 font-medium mb-1">Camisa:</label>
-                        <input type="text" id="talla_camisa" name="Talla Camisa" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow">
+            <div class="field-group">
+                <p>Talla de Ropa de Trabajo:</p>
+                <div class="tallas-grid">
+                    <div>
+                        <label for="talla_camisa">Camisa</label>
+                        <input type="text" id="talla_camisa" name="Talla Camisa">
                     </div>
-                    <div class="flex-1">
-                        <label for="talla_pantalon" class="block text-gray-700 font-medium mb-1">Pantalon:</label>
-                        <input type="text" id="talla_pantalon" name="Talla Pantalon" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow">
+                    <div>
+                        <label for="talla_pantalon">Pantalón</label>
+                        <input type="text" id="talla_pantalon" name="Talla Pantalon">
                     </div>
-                    <div class="flex-1">
-                        <label for="talla_zapatos" class="block text-gray-700 font-medium mb-1">Zapatos:</label>
-                        <input type="text" id="talla_zapatos" name="Talla Zapatos" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow">
+                    <div>
+                        <label for="talla_zapatos">Zapatos</label>
+                        <input type="text" id="talla_zapatos" name="Talla Zapatos">
                     </div>
                 </div>
             </div>
 
-            <!-- Nuevos campos para Fecha de Nacimiento en una sola fila -->
-            <div class="pt-4">
-                <label for="fecha_nacimiento" class="block text-gray-700 font-medium mb-1">Fecha de Nacimiento:</label>
-                <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
-                    <div class="flex-1">
-                        <input type="number" id="dia_nacimiento" name="Dia de Nacimiento" placeholder="Día" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow">
-                    </div>
-                    <div class="flex-1">
-                        <input type="number" id="mes_nacimiento" name="Mes de Nacimiento" placeholder="Mes" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow">
-                    </div>
-                    <div class="flex-1">
-                        <input type="number" id="anio_nacimiento" name="Año de Nacimiento" placeholder="Año" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition-shadow">
-                    </div>
+            <div class="field-group">
+                <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                <div class="grid-3">
+                    <input type="number" id="dia_nacimiento" name="Dia de Nacimiento" placeholder="Día">
+                    <input type="number" id="mes_nacimiento" name="Mes de Nacimiento" placeholder="Mes">
+                    <input type="number" id="anio_nacimiento" name="Año de Nacimiento" placeholder="Año">
                 </div>
             </div>
+
             <!-- Campo oculto para la fecha de registro -->
             <input type="hidden" id="fecha_registro" name="Fecha de Registro">
 
-            <button type="submit" id="register-button" class="w-full bg-pink-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:bg-pink-700 focus:outline-none focus:ring-4 focus:ring-pink-500 focus:ring-opacity-50">
-                Registrar
-            </button>
+            <button type="submit" id="register-button">Registrar</button>
         </form>
-        <div id="form-feedback" class="message-box hidden"></div>
+
+        <div id="message-container" class="message-box" style="display: none;"></div>
     </div>
 
     <script>
-        const form = document.getElementById('registro-form');
-        const feedbackDiv = document.getElementById('form-feedback');
+        document.getElementById('registro-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
 
-        // ¡Este es el enlace de tu script de Google Apps!
-        // REEMPLAZA ESTA URL con la nueva URL de tu script de Apps Script
-        const scriptURL = 'URL_DE_TU_SCRIPT_DE_APPS_SCRIPT_ACTUAL';
+            const feedbackElement = document.getElementById('message-container');
+            const registerButton = document.getElementById('register-button');
 
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
+            // Mostrar mensaje de carga y deshabilitar botón
+            feedbackElement.style.display = 'block';
+            feedbackElement.innerHTML = 'Enviando...';
+            feedbackElement.className = 'loading message-box';
+            registerButton.disabled = true;
 
-            feedbackDiv.classList.remove('hidden', 'success', 'error');
-            feedbackDiv.textContent = 'Enviando...';
-            
-            // Asignamos la fecha de registro actual
-            document.getElementById('fecha_registro').value = new Date().toLocaleString();
-
+            const form = event.target;
             const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+              data[key] = value;
+            }
+            
+            // Agregamos la fecha de registro actual
+            data['Fecha de Registro'] = new Date().toLocaleString();
+
+            // Usamos una URL relativa para que funcione en cualquier host
+            const serverUrl = '/submit-form';
 
             try {
-                const response = await fetch(scriptURL, {
+                const response = await fetch(serverUrl, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
+                        'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(data),
+                    body: JSON.stringify(data)
                 });
 
                 const result = await response.json();
 
                 if (response.ok && result.status === 'success') {
-                    feedbackDiv.textContent = 'Registrado';
-                    feedbackDiv.classList.add('success');
+                    feedbackElement.innerHTML = '¡Usuario registrado exitosamente!';
+                    feedbackElement.className = 'success message-box';
                     form.reset();
                 } else {
-                    feedbackDiv.textContent = 'Ocurrió un error. Inténtalo de nuevo.';
-                    feedbackDiv.classList.add('error');
-                    console.error('Form submission failed:', response.statusText);
+                    feedbackElement.innerHTML = result.error || 'Error al conectar con el servidor. Por favor, inténtalo de nuevo.';
+                    feedbackElement.className = 'error message-box';
                 }
             } catch (error) {
-                feedbackDiv.textContent = 'Error de conexión. Revisa tu internet.';
-                feedbackDiv.classList.add('error');
-                console.error('Form submission failed:', error);
+                feedbackElement.innerHTML = 'Error de conexión. Por favor, verifica el servidor.';
+                feedbackElement.className = 'error message-box';
+                console.error('Error:', error);
+            } finally {
+                registerButton.disabled = false;
             }
         });
     </script>
