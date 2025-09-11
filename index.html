@@ -3,85 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Nuevos Usuarios</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Registro de nuevos usuarios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Estilos generales para el cuerpo de la página */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             min-height: 100vh;
-            margin: 0;
-            color: #333;
-        }
-
-        /* Contenedor principal del formulario */
-        .form-container {
-            background-color: #ffffff;
-            padding: 2rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 450px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #1a202c;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            font-size: 1.875rem;
-        }
-
-        .form-subtitle {
-            color: #4a5568;
-            margin-bottom: 1.5rem;
-        }
-
-        label {
-            display: block;
-            text-align: left;
-            margin-bottom: 0.25rem;
-            color: #4a5568;
-            font-weight: 600;
-        }
-
-        input {
-            width: 100%;
-            padding: 0.75rem;
-            margin-bottom: 1rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 0.5rem;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-
-        input:focus {
-            border-color: #6366f1;
-            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
-            outline: none;
-        }
-
-        button {
-            width: 100%;
-            background: #6366f1;
-            color: white;
-            padding: 0.75rem;
-            border: none;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
-        }
-
-        button:hover {
-            background: #4f46e5;
-            transform: translateY(-2px);
+            padding: 20px;
         }
 
         .message-box {
@@ -107,155 +41,402 @@
             color: #374151;
         }
 
-        .field-group {
-            margin-bottom: 1rem;
-        }
-
-        .tallas-grid, .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-        }
-
-        .tallas-grid label, .grid-3 label {
-            font-size: 0.875rem;
-            color: #718096;
-            font-weight: 500;
-            text-align: left;
+        .table-container {
+            overflow-x: auto;
         }
     </style>
 </head>
-<body>
-    <div class="form-container">
-        <h1>Registro de Nuevos Usuarios</h1>
-        <p class="form-subtitle">Por favor, completa el siguiente formulario para registrar un nuevo usuario en la base de datos.</p>
-
-        <form id="registro-form">
-            <div class="field-group">
-                <label for="nombre_completo">Nombres y Apellidos</label>
-                <input type="text" id="nombre_completo" name="Nombres y Apellidos" required>
+<body class="bg-gray-100 p-8 flex flex-col items-center">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-4xl mb-8">
+        <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Registro de nuevos usuarios</h1>
+        <form id="user-form" class="space-y-4">
+            <!-- Sección de Información Personal -->
+            <h2 class="text-xl font-semibold text-gray-700">Información Personal</h2>
+            <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+                <div class="w-full sm:w-1/2">
+                    <label for="nombres" class="block text-sm font-medium text-gray-700">Nombres y Apellidos</label>
+                    <input type="text" id="nombres" name="Nombres y Apellidos" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+                </div>
+                <div class="w-full sm:w-1/2">
+                    <label for="correo" class="block text-sm font-medium text-gray-700">Correo</label>
+                    <input type="email" id="correo" name="Correo Electronico" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+                </div>
             </div>
-            <div class="field-group">
-                <label for="dni">DNI</label>
-                <input type="text" id="dni" name="DNI" required>
-            </div>
-            <div class="field-group">
-                <label for="celular">Nº Celular</label>
-                <input type="tel" id="celular" name="Nº Celular">
-            </div>
-            <div class="field-group">
-                <label for="email">Correo Electronico</label>
-                <input type="email" id="email" name="Correo Electronico" required>
-            </div>
-            <div class="field-group">
-                <label for="edad">Edad</label>
-                <input type="number" id="edad" name="Edad">
-            </div>
-            <div class="field-group">
-                <label for="puesto_cargo">Puesto/Cargo</label>
-                <input type="text" id="puesto_cargo" name="Puesto/Cargo">
-            </div>
-            <div class="field-group">
-                <label for="area_trabajo">Area/Zona de Trabajo</label>
-                <input type="text" id="area_trabajo" name="Area/Zona de Trabajo">
-            </div>
-            <div class="field-group">
-                <label for="nacionalidad">Nacionalidad</label>
-                <input type="text" id="nacionalidad" name="Nacionalidad">
-            </div>
-            <div class="field-group">
-                <label for="direccion">Direccion</label>
-                <input type="text" id="direccion" name="Direccion">
-            </div>
-
-            <div class="field-group">
-                <p>Talla de Ropa de Trabajo:</p>
-                <div class="tallas-grid">
-                    <div>
-                        <label for="talla_camisa">Camisa</label>
-                        <input type="text" id="talla_camisa" name="Talla Camisa">
-                    </div>
-                    <div>
-                        <label for="talla_pantalon">Pantalón</label>
-                        <input type="text" id="talla_pantalon" name="Talla Pantalon">
-                    </div>
-                    <div>
-                        <label for="talla_zapatos">Zapatos</label>
-                        <input type="text" id="talla_zapatos" name="Talla Zapatos">
-                    </div>
+            
+            <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+                <div class="w-full sm:w-1/3">
+                    <label for="dni" class="block text-sm font-medium text-gray-700">DNI</label>
+                    <input type="text" id="dni" name="DNI" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+                </div>
+                <div class="w-full sm:w-1/3">
+                    <label for="celular" class="block text-sm font-medium text-gray-700">Celular</label>
+                    <input type="tel" id="celular" name="Nº Celular" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+                </div>
+                <div class="w-full sm:w-1/3">
+                    <label for="direccion" class="block text-sm font-medium text-gray-700">Dirección Actual</label>
+                    <input type="text" id="direccion" name="Direccion Actual" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
                 </div>
             </div>
 
-            <div class="field-group">
-                <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-                <div class="grid-3">
-                    <input type="number" id="dia_nacimiento" name="Dia de Nacimiento" placeholder="Día">
-                    <input type="number" id="mes_nacimiento" name="Mes de Nacimiento" placeholder="Mes">
-                    <input type="number" id="anio_nacimiento" name="Año de Nacimiento" placeholder="Año">
+            <!-- Fila para Tipo de Sangre, Género y Enfermedad -->
+            <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+                <div class="w-full sm:w-1/3">
+                    <label for="tipoSangre" class="block text-sm font-medium text-gray-700">Tipo de Sangre</label>
+                    <select id="tipoSangre" name="Tipo de Sangre" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        <option value="">Seleccione...</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+                <div class="w-full sm:w-1/3">
+                    <label for="genero" class="block text-sm font-medium text-gray-700">Género</label>
+                    <select id="genero" name="Genero" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        <option value="">Seleccione...</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="No binario">No binario</option>
+                    </select>
+                </div>
+                <div class="w-full sm:w-1/3">
+                    <label for="enfermedad" class="block text-sm font-medium text-gray-700">Padece alguna enfermedad?</label>
+                    <select id="enfermedad" name="Padece alguna enfermedad" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        <option value="">Seleccione...</option>
+                        <option value="Si">Sí</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Campo condicional para la enfermedad -->
+            <div id="enfermedad-detalle-container" class="mt-4 hidden">
+                <label for="detalleEnfermedad" class="block text-sm font-medium text-gray-700">¿Cuál?</label>
+                <input type="text" id="detalleEnfermedad" name="Detalle de la Enfermedad" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+            </div>
+
+            <!-- Sección de Lugar y Fecha de Nacimiento -->
+            <h2 class="text-xl font-semibold text-gray-700 pt-6">Lugar y Fecha de Nacimiento</h2>
+            <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+                <div class="w-full sm:w-1/2">
+                    <label for="lugarNacimiento" class="block text-sm font-medium text-gray-700">Lugar de Nacimiento</label>
+                    <input type="text" id="lugarNacimiento" name="Lugar de Nacimiento" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div class="w-full sm:w-1/2">
+                    <label for="pais" class="block text-sm font-medium text-gray-700">País</label>
+                    <input type="text" id="pais" name="País" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+                <div class="w-full sm:w-1/3">
+                    <label for="distrito" class="block text-sm font-medium text-gray-700">Distrito</label>
+                    <input type="text" id="distrito" name="Distrito" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div class="w-full sm:w-1/3">
+                    <label for="provincia" class="block text-sm font-medium text-gray-700">Provincia</label>
+                    <input type="text" id="provincia" name="Provincia" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div class="w-full sm:w-1/3">
+                    <label for="departamento" class="block text-sm font-medium text-gray-700">Departamento</label>
+                    <input type="text" id="departamento" name="Departamento" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+                <div class="w-full sm:w-1/2">
+                    <label for="fechaNacimiento" class="block text-sm font-medium text-gray-700">Fecha de Nacimiento</label>
+                    <input type="date" id="fechaNacimiento" name="Fecha de Nacimiento" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div class="w-full sm:w-1/2">
+                    <label for="edad" class="block text-sm font-medium text-gray-700">Edad</label>
+                    <input type="text" id="edad" name="Edad" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md" readonly>
                 </div>
             </div>
 
-            <!-- Campo oculto para la fecha de registro -->
-            <input type="hidden" id="fecha_registro" name="Fecha de Registro">
+            <!-- Sección de Estado Civil e Hijos -->
+            <h2 class="text-xl font-semibold text-gray-700 pt-6">Estado Civil e Hijos</h2>
+            <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+                <div class="w-full sm:w-1/2">
+                    <label for="estadoCivil" class="block text-sm font-medium text-gray-700">Estado Civil</label>
+                    <select id="estadoCivil" name="Estado Civil" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        <option value="">Seleccione...</option>
+                        <option value="Soltero">Soltero</option>
+                        <option value="Casado">Casado</option>
+                        <option value="Viudo">Viudo</option>
+                        <option value="Divorciado">Divorciado</option>
+                        <option value="Conviviente">Conviviente</option>
+                    </select>
+                </div>
+                <div id="children-section" class="w-full sm:w-1/2 space-y-4 hidden">
+                    <div>
+                        <label for="numHijos" class="block text-sm font-medium text-gray-700">Cantidad de Hijos</label>
+                        <input type="number" id="numHijos" name="Cantidad de Hijos" min="0" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+            </div>
+            <div id="children-details-container" class="space-y-4 hidden"></div>
 
-            <button type="submit" id="register-button">Registrar</button>
+            <!-- Sección de Tallas -->
+            <h2 class="text-xl font-semibold text-gray-700 pt-6">Tallas</h2>
+            <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+                <div class="w-full sm:w-1/3">
+                    <label for="camisa" class="block text-sm font-medium text-gray-700">Talla de Camisa</label>
+                    <input type="text" id="camisa" name="Talla de Camisa" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div class="w-full sm:w-1/3">
+                    <label for="pantalon" class="block text-sm font-medium text-gray-700">Talla de Pantalón</label>
+                    <input type="text" id="pantalon" name="Talla de Pantalon" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div class="w-full sm:w-1/3">
+                    <label for="zapato" class="block text-sm font-medium text-gray-700">Talla de Zapato</label>
+                    <input type="text" id="zapato" name="Talla de Zapato" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </div>
+
+            <div id="message-container" class="hidden"></div>
+
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mt-6">
+                <button type="button" id="send-button" class="w-full sm:w-auto px-6 py-3 bg-blue-600 text-white font-medium rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition ease-in-out duration-150">
+                    Enviar y Registrar
+                </button>
+                <button type="button" id="export-button" class="w-full sm:w-auto px-6 py-3 bg-green-600 text-white font-medium rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition ease-in-out duration-150">
+                    Exportar a CSV
+                </button>
+                <button type="reset" id="clear-button" class="w-full sm:w-auto px-6 py-3 bg-red-600 text-white font-medium rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition ease-in-out duration-150">
+                    Limpiar Formulario
+                </button>
+            </div>
         </form>
-
-        <div id="message-container" class="message-box" style="display: none;"></div>
     </div>
 
+    <!-- Contenedor para la lista de usuarios -->
+    <div id="user-list-container" class="bg-white p-8 rounded-lg shadow-md w-full max-w-4xl">
+        <h2 class="text-2xl font-bold mb-4 text-center text-gray-800">Usuarios Registrados</h2>
+        <div class="table-container">
+            <table class="w-full border-collapse">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th class="px-4 py-2 text-left">Nombres y Apellidos</th>
+                        <th class="px-4 py-2 text-left">Correo Electrónico</th>
+                        <th class="px-4 py-2 text-left">DNI</th>
+                        <th class="px-4 py-2 text-left">Celular</th>
+                        <th class="px-4 py-2 text-left">Fecha de Registro</th>
+                    </tr>
+                </thead>
+                <tbody id="user-list-body" class="divide-y divide-gray-200">
+                    <!-- Ahora los datos no se insertan porque ya no se envían a un servidor -->
+                    <tr><td colspan="5" class="py-4 text-center text-gray-500">No hay usuarios registrados en este modo local.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
     <script>
-        document.getElementById('registro-form').addEventListener('submit', async function(event) {
-            event.preventDefault();
+        const form = document.getElementById('user-form');
+        const sendButton = document.getElementById('send-button');
+        const exportButton = document.getElementById('export-button');
+        const messageContainer = document.getElementById('message-container');
+        const fechaNacimientoInput = document.getElementById('fechaNacimiento');
+        const edadInput = document.getElementById('edad');
+        const estadoCivilSelect = document.getElementById('estadoCivil');
+        const childrenSection = document.getElementById('children-section');
+        const numHijosInput = document.getElementById('numHijos');
+        const childrenDetailsContainer = document.getElementById('children-details-container');
+        const enfermedadSelect = document.getElementById('enfermedad');
+        const enfermedadDetalleContainer = document.getElementById('enfermedad-detalle-container');
 
-            const feedbackElement = document.getElementById('message-container');
-            const registerButton = document.getElementById('register-button');
+        // Función para mostrar u ocultar el campo de detalle de enfermedad
+        enfermedadSelect.addEventListener('change', () => {
+            if (enfermedadSelect.value === 'Si') {
+                enfermedadDetalleContainer.classList.remove('hidden');
+            } else {
+                enfermedadDetalleContainer.classList.add('hidden');
+                document.getElementById('detalleEnfermedad').value = '';
+            }
+        });
 
-            // Mostrar mensaje de carga y deshabilitar botón
-            feedbackElement.style.display = 'block';
-            feedbackElement.innerHTML = 'Enviando...';
-            feedbackElement.className = 'loading message-box';
-            registerButton.disabled = true;
+        // Función para calcular la edad automáticamente
+        fechaNacimientoInput.addEventListener('input', () => {
+            const birthDate = new Date(fechaNacimientoInput.value);
+            const today = new Date();
 
-            const form = event.target;
+            if (isNaN(birthDate.getTime())) {
+                edadInput.value = '';
+                return;
+            }
+
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDifference = today.getMonth() - birthDate.getMonth();
+            
+            if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+
+            edadInput.value = age >= 0 ? age : '';
+        });
+
+        // Función para mostrar u ocultar los campos de hijos
+        estadoCivilSelect.addEventListener('change', () => {
+            const selectedStatus = estadoCivilSelect.value;
+            if (selectedStatus === 'Casado' || selectedStatus === 'Divorciado' || selectedStatus === 'Viudo' || selectedStatus === 'Conviviente') {
+                childrenSection.classList.remove('hidden');
+            } else {
+                childrenSection.classList.add('hidden');
+                childrenDetailsContainer.classList.add('hidden');
+                numHijosInput.value = '';
+                childrenDetailsContainer.innerHTML = '';
+            }
+        });
+        
+        // Función para generar los campos de nombre y sexo para cada hijo
+        numHijosInput.addEventListener('input', () => {
+            const numHijos = parseInt(numHijosInput.value);
+            childrenDetailsContainer.innerHTML = '';
+            
+            if (numHijos > 0) {
+                childrenDetailsContainer.classList.remove('hidden');
+                for (let i = 1; i <= numHijos; i++) {
+                    const childDiv = document.createElement('div');
+                    childDiv.className = 'flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0';
+                    childDiv.innerHTML = `
+                        <div class="w-full sm:w-1/2">
+                            <label for="nombreHijo${i}" class="block text-sm font-medium text-gray-700">Nombre de Hijo ${i}</label>
+                            <input type="text" id="nombreHijo${i}" name="Nombre de Hijo ${i}" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+                        </div>
+                        <div class="w-full sm:w-1/2">
+                            <label for="sexoHijo${i}" class="block text-sm font-medium text-gray-700">Sexo de Hijo ${i}</label>
+                            <select id="sexoHijo${i}" name="Sexo de Hijo ${i}" class="mt-1 block w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+                                <option value="">Seleccione...</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                            </select>
+                        </div>
+                    `;
+                    childrenDetailsContainer.appendChild(childDiv);
+                }
+            } else {
+                childrenDetailsContainer.classList.add('hidden');
+            }
+        });
+
+        // Función para recopilar todos los datos del formulario
+        function getFormData() {
             const formData = new FormData(form);
             const data = {};
-            for (let [key, value] of formData.entries()) {
-              data[key] = value;
+            formData.forEach((value, key) => data[key] = value);
+            data['Fecha de Registro'] = new Date().toLocaleDateString('es-ES');
+            
+            const numHijos = parseInt(numHijosInput.value);
+            if (numHijos > 0) {
+                const hijos = [];
+                for (let i = 1; i <= numHijos; i++) {
+                    const nombre = document.getElementById(`nombreHijo${i}`).value;
+                    const sexo = document.getElementById(`sexoHijo${i}`).value;
+                    hijos.push({ nombre, sexo });
+                }
+                data['Hijos'] = JSON.stringify(hijos);
+            } else {
+                data['Hijos'] = '';
             }
             
-            // Agregamos la fecha de registro actual
-            data['Fecha de Registro'] = new Date().toLocaleString();
-
-            // Usamos una URL relativa para que funcione en cualquier host
-            const serverUrl = '/submit-form';
-
-            try {
-                const response = await fetch(serverUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                const result = await response.json();
-
-                if (response.ok && result.status === 'success') {
-                    feedbackElement.innerHTML = '¡Usuario registrado exitosamente!';
-                    feedbackElement.className = 'success message-box';
-                    form.reset();
-                } else {
-                    feedbackElement.innerHTML = result.error || 'Error al conectar con el servidor. Por favor, inténtalo de nuevo.';
-                    feedbackElement.className = 'error message-box';
-                }
-            } catch (error) {
-                feedbackElement.innerHTML = 'Error de conexión. Por favor, verifica el servidor.';
-                feedbackElement.className = 'error message-box';
-                console.error('Error:', error);
-            } finally {
-                registerButton.disabled = false;
+            if (enfermedadSelect.value === 'Si') {
+                data['Detalle de la Enfermedad'] = document.getElementById('detalleEnfermedad').value;
+            } else {
+                data['Detalle de la Enfermedad'] = '';
             }
+
+            return data;
+        }
+
+        // Función para verificar si todos los campos requeridos están llenos.
+        function validateForm() {
+            // Verificar los campos con el atributo 'required'
+            const requiredFields = form.querySelectorAll('[required]');
+            for (const field of requiredFields) {
+                if (!field.value) {
+                    return false;
+                }
+            }
+
+            // Verificar campos condicionalmente requeridos
+            if (enfermedadSelect.value === 'Si' && !document.getElementById('detalleEnfermedad').value) {
+                return false;
+            }
+
+            if (estadoCivilSelect.value !== 'Soltero' && estadoCivilSelect.value !== '' && estadoCivilSelect.value !== 'Seleccione...') {
+                const numHijos = parseInt(numHijosInput.value);
+                if (numHijos > 0) {
+                    const childrenInputs = childrenDetailsContainer.querySelectorAll('input, select');
+                    for (const childField of childrenInputs) {
+                        if (!childField.value) {
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        // --- Funcionalidad del formulario y exportación ---
+
+        sendButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            if (validateForm()) {
+                messageContainer.style.display = 'block';
+                messageContainer.innerHTML = '¡Registro exitoso! 🎉';
+                messageContainer.className = 'success message-box';
+            } else {
+                messageContainer.style.display = 'block';
+                messageContainer.innerHTML = 'Por favor, llena todos los campos obligatorios para continuar.';
+                messageContainer.className = 'error message-box';
+                form.reportValidity(); // Esto resalta los campos que faltan
+            }
+        });
+
+        exportButton.addEventListener('click', function() {
+            if (!validateForm()) {
+                messageContainer.style.display = 'block';
+                messageContainer.innerHTML = 'Por favor, llena todos los campos obligatorios para poder exportar.';
+                messageContainer.className = 'error message-box';
+                form.reportValidity();
+                return;
+            }
+            const data = getFormData();
+            const headers = Object.keys(data);
+            const rowData = headers.map(header => {
+                let value = data[header];
+                if (typeof value === 'string' && value.includes(',')) {
+                    return `"${value}"`;
+                }
+                return value;
+            });
+            const csvContent = `${headers.join(',')}\n${rowData.join(',')}`;
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            if (link.download !== undefined) {
+                const url = URL.createObjectURL(blob);
+                link.setAttribute("href", url);
+                link.setAttribute("download", "usuarios.csv");
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        });
+
+        document.getElementById('clear-button').addEventListener('click', () => {
+            childrenSection.classList.add('hidden');
+            childrenDetailsContainer.classList.add('hidden');
+            numHijosInput.value = '';
+            childrenDetailsContainer.innerHTML = '';
+            enfermedadDetalleContainer.classList.add('hidden');
+            document.getElementById('detalleEnfermedad').value = '';
+            messageContainer.classList.add('hidden');
         });
     </script>
 </body>
