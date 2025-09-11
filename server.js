@@ -12,8 +12,7 @@ app.use(express.json());
 // Ruta para manejar el formulario de registro
 app.post('/submit-form', async (req, res) => {
   try {
-    // URL de tu script de Google Apps Script.
-    // DEBES REEMPLAZAR 'URL_DE_TU_SCRIPT_DE_APPS_SCRIPT' con la URL real que obtuviste.
+    // ⬇️ PEGA LA URL DE TU SCRIPT DE GOOGLE APPS AQUÍ ⬇️
     const scriptURL = 'URL_DE_TU_SCRIPT_DE_APPS_SCRIPT';
     
     // Obtenemos los datos del cuerpo de la solicitud (enviados por el formulario)
