@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const axios = require('axios'); // Usaremos axios para hacer la solicitud a Google Apps Script
+const axios = require('axios'); // Usamos axios para hacer la solicitud a Google Apps Script
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -12,8 +12,9 @@ app.use(express.json());
 // Ruta para manejar el formulario de registro
 app.post('/submit-form', async (req, res) => {
   try {
-    // URL de tu script de Google Apps Script (REEMPLÁZALA CON TU URL REAL)
-    const scriptURL = 'REEMPLAZA_CON_LA_URL_DE_TU_SCRIPT_DE_APPS_SCRIPT';
+    // URL de tu script de Google Apps Script.
+    // DEBES REEMPLAZAR 'URL_DE_TU_SCRIPT_DE_APPS_SCRIPT' con la URL real que obtuviste.
+    const scriptURL = 'URL_DE_TU_SCRIPT_DE_APPS_SCRIPT';
     
     // Obtenemos los datos del cuerpo de la solicitud (enviados por el formulario)
     const formData = req.body;
